@@ -15,9 +15,10 @@ dom_sec_troisieme=["V7/II","V7/III","V7/IV","V7/V","V7/VI","V7/VI","V7/VII"]
 #Inventaire VD, IID ### attention au d minuscule ou majuscule.
 ######################################################
 
-melodie =("NUL","V","IV","III","II","I","VII","I","VI","V","NUL")
-#("NUL","I","I","II","III","II","III","IV","III","II","II","I","NUL") # travail 3 premiere ligne
-#("NUL","III","IV","III","II","I","VII","I","II","II","II","I","NUL")
+melodie =("NUL","I","II","III","V","II","NUL")
+
+#""I","I","II","III","II","III","IV","III","II","II","I","NUL")
+# travail 3 premieNUL","III","IV","III","II","I","VII","I","II","II","II","I","NUL")
 ######################################################
 #ajout d'une fonction pour être en mesure de travailler directement dans le terminal
 def melodie_notes(a):
