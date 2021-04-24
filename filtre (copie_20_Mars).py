@@ -6,25 +6,39 @@ accord_majeur_deuxie_renv = ["I64","II64","III64","IV64","V64","VI64","VII64"]
 accord_dom_7 =["V7","V65","V43","V2"]
 accord_dom =["V","V6","V64"]
 accord_predom=["II7","II65","II43","II2"]
-
+dom_sec_fond = ["V/II","V/III","V/IV","V/V","V/VI","V/VI","V/VII"]
+dom_sec_premier = ["V/II","V/III","V/IV","V/V","V/VI","V/VI","V/VII"]
+dom_sec_second =["V/II","V/III","V/IV","V/V","V/VI","V/VI","V/VII"]
+dom_sec_troisieme=["V7/II","V7/III","V7/IV","V7/V","V7/VI","V7/VI","V7/VII"]
 ######################################################
 #une categorie speciale est necessaire pour isole les notes de la melodie ayant un lien avec le V
-#Inventaire Vd, IId
-######################################################3
+#Inventaire VD, IID ### attention au d minuscule ou majuscule.
+######################################################
 
-melodie =("NUL","III","VII","I","II","I","VII","I","NUL") # p.259
-
+melodie =("NUL","V","IV","III","II","I","VII","I","VI","V","NUL")
+#("NUL","I","I","II","III","II","III","IV","III","II","II","I","NUL") # travail 3 premiere ligne
+#("NUL","III","IV","III","II","I","VII","I","II","II","II","I","NUL")
+######################################################
+#ajout d'une fonction pour être en mesure de travailler directement dans le terminal
+def melodie_notes(a):
+    liste_note = []
+    print (a)
+    return
+######################################################
 sequence = []
-#repertoire des options possiblement une fonction
+#repertoire des options
 
-for i in range(1, 8):
+long = len(melodie)
 
-    a = random.randrange(0, 2)
+
+for i in range(1, long): #modification sur le range pour cibler toutes les notes
+
+    a = random.randrange(0, 2) #pour tenir compte des echanges
 
     if melodie[i] == "I":
         if melodie[i-1] == "NUL":
             sequence.append(accord_majeur_fond[0]) # si le premier accord
-            print(i)
+
         elif melodie[i-1] == "VII":
             try:
                 if sequence.index("V43",i-2):
@@ -55,12 +69,14 @@ for i in range(1, 8):
         else:
             sequence.append(accord_majeur_premier_renv[1]) #regle du renversement de II6
 
-    elif melodie[i] == "IID":
+    elif melodie[i] == "IID": # ecriture pour indiquer avec le D qu'il s'agit d'une dominante.
         if melodie[i-1] == "III":
             sequence.append(accord_dom[0])
         else:
             sequence.append(accord_majeur_premier_renv[4]) #regle du renversement de II6
 
+    elif melodie[i] == "IID1": # ici il s'agit plutot d'indiquer une dominante seconde avec la matrice de dominante secondaire
+            sequence.append(dom_sec_fond[3]) # attention parce qu'il n'y a pas encore les alterations
 
     elif melodie[i] == "III":
         if melodie[i-1] == "NUL":
@@ -68,6 +84,8 @@ for i in range(1, 8):
         elif melodie[i-1] == "VII":
             sequence.append(accord_majeur_fond[0])
         elif melodie[i-1] == "II":
+            if sequence.index("II6",i-2) and melodie[i+1] == "IV":
+                sequence.append(accord_majeur_fond [1])
             if sequence.index("II6",i-2):
                 sequence.append(accord_majeur_deuxie_renv[0])
         elif melodie[i-1] == "IV":
@@ -126,7 +144,6 @@ for i in range(1, 8):
             sequence.append(accord_majeur_fond[5])  # progression I VI ou I IV. Il est necessaire de faire appel au cycle des quintes
         elif melodie[i-1] == "V":
             sequence.append(accord_majeur_fond[3])
-            print(sequence[i])
         elif melodie[i-1] == "I":
             sequence.append(accord_majeur_fond[3])
         elif melodie[i-1] == "VI":
