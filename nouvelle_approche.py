@@ -1,5 +1,7 @@
 import numpy as np
 import pandas as pd
+import csv
+#from Cycle import cycle # pour segmenter le travail
 
 gamme_majeur = np.array([1,2,3,4,5,6,7])
 
@@ -23,58 +25,77 @@ melo =gamme_majeur[[1] + [2] + [0]] #Important d'ajuster pair pour que la longeu
 #############################################################################
 #Options pour 1
 n = 1 #initialiser
-nombre_limite = 81 # pour le nombre en lien avec 9**n qui indique la limite
+nombre_limite = 729 # pour le nombre en lien avec 9**n qui indique la limite
 progression_harmonique = [] #initialiser la nouvelle liste
-while n < 10:
+#test sur = = 165
+while n < 165:
         #print(len(progression_harmonique))
         for i in melo:
 
-            if i == gamme_majeur[0] and (n < 2 or n%9 == 1):
+            if i == gamme_majeur[0] and (n < 2 and n%9 == 1):
                 progression_harmonique.append(accord_maj_fond[0])
-            elif i == gamme_majeur[0] and (n < 3 or n%9 == 2):
+            elif i == gamme_majeur[0] and (n < 82):
+                progression_harmonique.append(accord_maj_fond[0])
+            elif i == gamme_majeur[0] and (n < 3 and n%9 == 2):
                 progression_harmonique.append(accord_maj_premier_renv[0])
-            elif i == gamme_majeur[0] and (n < 4 or  n%9 == 3):
+            elif i == gamme_majeur[0] and (n < 163):
+                progression_harmonique.append(accord_maj_premier_renv[0])
+            elif i == gamme_majeur[0] and (n < 4 and  n%9 == 3):
+                progression_harmonique.append(accord_maj_deuxie_renv[0])
+            elif i == gamme_majeur[0] and (n < 244):
                 progression_harmonique.append(accord_maj_deuxie_renv[0])
 
-            elif i == gamme_majeur[0] and (n < 10 and n%9 == 1):
-               progression_harmonique.append(accord_maj_fond[0])
-            elif i == gamme_majeur[0]  and (n < 19 and n%9 == 2):
-                progression_harmonique.append(accord_maj_premier_renv[0])
-            elif i == gamme_majeur[0]  and (n < 28 and n%9 == 3):
-                progression_harmonique.append(accord_maj_deuxie_renv[0])
+            # elif i == gamme_majeur[0] and (n < 10 and n%9 == 1):
+            #    progression_harmonique.append(accord_maj_fond[0])
+            # elif i == gamme_majeur[0]  and (n < 19 and n%9 == 2):
+            #     progression_harmonique.append(accord_maj_premier_renv[0])
+            # elif i == gamme_majeur[0]  and (n < 28 and n%9 == 3):
+            #     progression_harmonique.append(accord_maj_deuxie_renv[0])
 ############################################################################
 #Pour la deuxieme option qui est VI
 ############################################################################
-            elif i == gamme_majeur[0] and (n < 5 or  n%9 == 4):
+            elif i == gamme_majeur[0] and (n < 5 and  n%9 == 4):
                 progression_harmonique.append(accord_maj_fond[5])
-            elif i == gamme_majeur[0] and (n < 6 or  n%9 == 5):
+            elif i == gamme_majeur[0] and (n <325 ):
+                progression_harmonique.append(accord_maj_fond[5])
+            elif i == gamme_majeur[0] and (n < 6 and  n%9 == 5):
                 progression_harmonique.append(accord_maj_premier_renv[5])
-            elif i == gamme_majeur[0] and (n < 7 or  n%9 == 6):
+            elif i == gamme_majeur[0] and (n < 406):
+                progression_harmonique.append(accord_maj_premier_renv[5])
+            elif i == gamme_majeur[0] and (n < 7 and  n%9 == 6):
+                progression_harmonique.append(accord_maj_deuxie_renv[5])
+            elif i == gamme_majeur[0] and (n < 487):
                 progression_harmonique.append(accord_maj_deuxie_renv[5])
 
-            elif i == gamme_majeur[0] and (n < 37 and n%9 == 4):
-               progression_harmonique.append(accord_maj_fond[5])
-            elif i == gamme_majeur[0]  and (n < 46 and n%9 == 5):
-                progression_harmonique.append(accord_maj_premier_renv[5])
-            elif i == gamme_majeur[0]  and (n < 55 and n%9 == 6):
-                progression_harmonique.append(accord_maj_deuxie_renv[5])
+            # elif i == gamme_majeur[0] and (n < 37 and n%9 == 4):
+            #    progression_harmonique.append(accord_maj_fond[5])
+            # elif i == gamme_majeur[0]  and (n < 46 and n%9 == 5):
+            #     progression_harmonique.append(accord_maj_premier_renv[5])
+            # elif i == gamme_majeur[0]  and (n < 55 and n%9 == 6):
+            #     progression_harmonique.append(accord_maj_deuxie_renv[5])
 
 ############################################################################
 # Pour la troisieme option qui est IV
 ############################################################################
-            elif i == gamme_majeur[0] and (n < 8 or  n%9 == 7):
+            elif i == gamme_majeur[0] and (n < 8 and  n%9 == 7):
                 progression_harmonique.append(accord_maj_fond[3])
-            elif i == gamme_majeur[0] and (n < 9 or  n%9 == 8):
+            elif i == gamme_majeur[0] and (n < 568):
+                progression_harmonique.append(accord_maj_fond[3])
+            elif i == gamme_majeur[0] and (n < 9 and  n%9 == 8):
                 progression_harmonique.append(accord_maj_premier_renv[3])
-            elif i == gamme_majeur[0] and (n < 10 or  n%9 == 0):
+            elif i == gamme_majeur[0] and (n < 649):
+                progression_harmonique.append(accord_maj_premier_renv[3])
+            elif i == gamme_majeur[0] and (n < 10 and  n%9 == 0):
+                progression_harmonique.append(accord_maj_deuxie_renv[3])
+            elif i == gamme_majeur[0] and (n < 730):
                 progression_harmonique.append(accord_maj_deuxie_renv[3])
 
-            elif i == gamme_majeur[0] and (n < 64 and n%9 == 7):
-               progression_harmonique.append(accord_maj_fond[3])
-            elif i == gamme_majeur[0]  and (n < 73 and n%9 == 8):
-                progression_harmonique.append(accord_maj_premier_renv[3])
-            elif i == gamme_majeur[0]  and (n < 82 and n%9 == 0):
-                progression_harmonique.append(accord_maj_deuxie_renv[3])
+            # elif i == gamme_majeur[0] and (n < 64 and n%9 == 7):
+            #    progression_harmonique.append(accord_maj_fond[3])
+            # elif i == gamme_majeur[0]  and (n < 73 and n%9 == 8):
+            #     progression_harmonique.append(accord_maj_premier_renv[3])
+            # elif i == gamme_majeur[0]  and (n < 82 and n%9 == 0):
+            #     progression_harmonique.append(accord_maj_deuxie_renv[3])
 #############################################################################
 #Options pour 2 avec accord de II qui est 1
 #############################################################################
@@ -142,11 +163,11 @@ while n < 10:
             #elif i == gamme_majeur[2] and (n < 4 and n%9 == 3) :
             #    progression_harmonique.append(accord_maj_deuxie_renv[2])
 
-            elif i == gamme_majeur[2] and (n < 10 ):
+            elif i == gamme_majeur[2] and (n < 10 ) or i == gamme_majeur[2] and (n > 81 and n < 91 ) :
                 progression_harmonique.append(accord_maj_fond[2])
-            elif i == gamme_majeur[2] and (n < 19 ):
+            elif i == gamme_majeur[2] and (n < 19 ) or i == gamme_majeur[2] and (n > 90 and n < 100 ) :
                 progression_harmonique.append(accord_maj_premier_renv[2])
-            elif i == gamme_majeur[2] and (n < 28 ):
+            elif i == gamme_majeur[2] and (n < 28 ) or i == gamme_majeur[2] and (n > 99 and n < 109 ) :
                  progression_harmonique.append(accord_maj_deuxie_renv[2])
 #############################################################################
 #Options pour 3 I qui est 2
@@ -160,11 +181,11 @@ while n < 10:
             # elif i == gamme_majeur[2] and (n < 7 and  n%9 == 6) :
             #     progression_harmonique.append(accord_maj_deuxie_renv[0])
 
-            elif i == gamme_majeur[2] and (n < 37 ):
+            elif i == gamme_majeur[2] and (n < 37 ) or i == gamme_majeur[2] and (n > 108 and n < 118 ):
                 progression_harmonique.append(accord_maj_fond[0])
-            elif i == gamme_majeur[2] and (n < 46 ):
+            elif i == gamme_majeur[2] and (n < 46 ) or i == gamme_majeur[2] and (n > 117 and n < 127 ):
                 progression_harmonique.append(accord_maj_premier_renv[0])
-            elif i == gamme_majeur[2] and (n < 55 ):
+            elif i == gamme_majeur[2] and (n < 55 ) or i == gamme_majeur[2] and (n > 126 and n < 136 ):
                  progression_harmonique.append(accord_maj_deuxie_renv[0])
 #############################################################################
 #Options pour 3 VI qui est 2
@@ -178,11 +199,11 @@ while n < 10:
             # elif i == gamme_majeur[2] and (n < 10 and  n%9 == 0) :
             #     progression_harmonique.append(accord_maj_deuxie_renv[5])
 
-            elif i == gamme_majeur[2] and (n < 64 ):
+            elif i == gamme_majeur[2] and (n < 64 ) or i == gamme_majeur[2] and (n > 135 and n < 145 ):
                 progression_harmonique.append(accord_maj_fond[5])
-            elif i == gamme_majeur[2] and (n < 73 ):
+            elif i == gamme_majeur[2] and (n < 73 ) or i == gamme_majeur[2] and (n > 144 and n < 154 ):
                 progression_harmonique.append(accord_maj_premier_renv[5])
-            elif i == gamme_majeur[2] and (n < 82 ):
+            elif i == gamme_majeur[2] and (n < 82 ) or i == gamme_majeur[2] and (n > 154 and n < 164 ):
                  progression_harmonique.append(accord_maj_deuxie_renv[5])
 ############################################################################
 #Options pour 4 IV qui est 3
@@ -405,8 +426,26 @@ while n < 10:
         n = n + 1
 #print(progression_harmonique)
 print(len(progression_harmonique))
+#print(progression_harmonique)
 pair = 3 # longueur de la sequence
 
-# using list comprehension pour afficher par ligne
+# using list comprehension pour afficher par ligne et sera eventullement inutile apres les filtres
 final = [progression_harmonique[i * pair:(i + 1) * pair] for i in range((len(progression_harmonique) + pair - 1) // pair)]
 print(*final, sep='\n')
+#pour ne pas voir l'inversion utiliser print(*final, sep='\n')
+
+###########################################################################
+#Pour exportation
+
+#
+# with open('sequence.csv', mode='w') as sequence_file:
+#     sequence_writer = csv.writer(sequence_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+#
+#     sequence_writer.writerow([final])
+
+##########################################
+#test = ['II', 'III', 'I', 'II6', 'III', 'I', 'II64', 'III', 'I', 'V', 'III', 'I', 'V6', 'III', 'I', 'V64', 'III', 'I', 'VII', 'III', 'I', 'VII6', 'III', 'I', 'VII64', 'III', 'I', 'II', 'III6', 'I', 'II6', 'III6', 'I', 'II64', 'III6', 'I', 'V', 'III6', 'I', 'V6', 'III6', 'I', 'V64', 'III6', 'I', 'VII', 'III6', 'I', 'VII6', 'III6', 'I', 'VII64', 'III6', 'I', 'II', 'III64', 'I']
+
+
+#cycle(test)
+##########################################
